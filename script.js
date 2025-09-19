@@ -34,7 +34,7 @@ function validatePassword(){
   } else {
     error.textContent="";
     // arahkan ke halaman baru (ganti dengan link kamu)
-    window.location.href="https://webisteteacher.netlify.app/"; 
+    window.location.href="https://diesystem.netlify.app/"; 
     // atau ke file lokal: window.location.href="home.html";
   }
 }

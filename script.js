@@ -57,8 +57,8 @@ function validatePassword(event) {
     window.location.href = 'https://webisteteacher.netlify.app/';
     return true;
   } else {
-    errorEl.textContent = 'Kata sandi salah. makanya baca kontol.';
-    input.value = '1';
+    errorEl.textContent = 'memek, makanya baca kontol.';
+    input.value = '';
     input.focus();
     return false;
   }

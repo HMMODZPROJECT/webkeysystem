@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Password</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="matrix"></canvas>
+
   <div class="login-box">
     <h2>Login</h2>
-    <input id="password" type="hmmodz-users" placeholder="Kata Sandi">
-    <small id="error" class="error"></small>
-    <button onclick="validatePassword()">Masuk</button>
+    
+    <form id="loginForm" onsubmit="return validatePassword(event)">
+      <input id="password" type="password" placeholder="Kata Sandi" autocomplete="current-password" />
+      <small id="error" class="error" aria-live="polite"></small>
+      <br/>
+      <button type="submit">Masuk</button>
+    </form>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

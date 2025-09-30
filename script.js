@@ -1,29 +1,43 @@
-// Matrix effect
-const canvas=document.getElementById("matrix"),ctx=canvas.getContext("2d");
-canvas.height=window.innerHeight;canvas.width=window.innerWidth;
+// ====== Efek Matrix Rain ======
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
 
-const chars="アァイィウヴエェオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const fontSize=14,columns=canvas.width/fontSize;
-let drops=[];
-for(let x=0;x<columns;x++)drops[x]=1;
+// Atur ukuran canvas full screen
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-function draw(){
-  ctx.fillStyle="rgba(0,0,0,0.05)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="#0f0";ctx.font=fontSize+"px monospace";
-  for(let i=0;i<drops.length;i++){
-    const text=chars.charAt(Math.floor(Math.random()*chars.length));
-    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-    if(drops[i]*fontSize>canvas.height&&Math.random()>0.975)drops[i]=0;
+const letters = "アカサタナハマヤラワ0123456789アイウエオABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize = 16;
+const columns = canvas.width / fontSize; 
+
+// array untuk posisi Y setiap kolom
+const drops = [];
+for (let i = 0; i < columns; i++) {
+  drops[i] = 1;
+}
+
+function draw() {
+  // background hitam dengan transparansi biar ada efek trail
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#0F0"; // warna hijau
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    // reset ke atas dengan random supaya jatuh terus
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
     drops[i]++;
   }
 }
-setInterval(draw,35);
+setInterval(draw, 33);
 
-window.addEventListener("resize",()=>{
-  canvas.height=window.innerHeight;
-  canvas.width=window.innerWidth;
-});
+}
 
 // Contoh sederhana: password yang benar (ganti sesuai kebutuhan)
 // NOTE: untuk aplikasi nyata, verifikasi password harus dilakukan di server, bukan di JS client.

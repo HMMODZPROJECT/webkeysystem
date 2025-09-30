@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('matrix');
 const ctx = canvas.getContext('2d');
 
@@ -9,14 +8,12 @@ const letters = "アカサタナハマヤラワ0123456789アイウエオABCDEFGH
 const fontSize = 16;
 const columns = canvas.width / fontSize; 
 
-
 const drops = [];
 for (let i = 0; i < columns; i++) {
   drops[i] = 1;
 }
 
 function draw() {
-  
   ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -35,8 +32,6 @@ function draw() {
 }
 setInterval(draw, 33);
 
-}
-
 const CORRECT_PASSWORD = 'hmmodz-updt';
 
 function validatePassword(event) {
@@ -45,19 +40,18 @@ function validatePassword(event) {
   const errorEl = document.getElementById('error');
   const pw = input.value.trim();
 
-  
   errorEl.textContent = '';
 
   if (!pw) {
-    errorEl.textContent = 'Masukkan kata sandi.';
+    errorEl.textContent = 'Password';
     return false;
   }
 
   if (pw === CORRECT_PASSWORD) {
-    window.location.href = 'https://webisteteacher.netlify.app/';
+    window.location.href = 'https://websiteteacher.netlify.app/';
     return true;
   } else {
-    errorEl.textContent = 'memek, makanya baca kontol.';
+    errorEl.textContent = 'Ngentod, Makanya Punya mata di pake memek';
     input.value = '';
     input.focus();
     return false;

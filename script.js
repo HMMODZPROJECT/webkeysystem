@@ -48,7 +48,7 @@ function validatePassword(event) {
   }
 
   if (pw === CORRECT_PASSWORD) {
-    window.location.href = 'https://websiteteacher.netlify.app/';
+    window.location.href = 'https://webisteteacher.netlify.app/';
     return true;
   } else {
     errorEl.textContent = 'Ngentod, Makanya Punya mata di pake memek';

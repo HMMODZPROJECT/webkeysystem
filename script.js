@@ -25,16 +25,35 @@ window.addEventListener("resize",()=>{
   canvas.width=window.innerWidth;
 });
 
-// Password validation + redirect
-function validatePassword(){
-  const pass=document.getElementById("password").value;
-  const error=document.getElementById("error");
-  if(pass.length<6){
-    error.textContent="Minimal 6 karakter!";
+// Contoh sederhana: password yang benar (ganti sesuai kebutuhan)
+// NOTE: untuk aplikasi nyata, verifikasi password harus dilakukan di server, bukan di JS client.
+const CORRECT_PASSWORD = 'hmmodz-updt'; // ganti ini
+
+function validatePassword(event) {
+  if (event && event.preventDefault) event.preventDefault(); // cegah submit default
+  const input = document.getElementById('password');
+  const errorEl = document.getElementById('error');
+  const pw = input.value.trim();
+
+  // reset pesan
+  errorEl.textContent = '';
+
+  if (!pw) {
+    errorEl.textContent = 'Masukkan kata sandi.';
+    return false;
+  }
+
+  if (pw === CORRECT_PASSWORD) {
+    // sukses: redirect ke halaman berikutnya
+    // ganti 'dashboard.html' dengan tujuan yang diinginkan
+    window.location.href = 'https://webisteteacher.netlify.app/';
+    return true;
   } else {
-    error.textContent="";
-    // arahkan ke halaman baru (ganti dengan link kamu)
-    window.location.href="https://webisteteacher.netlify.app/"; 
-    // atau ke file lokal: window.location.href="home.html";
+    // salah: tampilkan pesan dan jangan redirect
+    errorEl.textContent = 'Kata sandi salah. Coba lagi.';
+    // opsional: bersihkan input atau fokus kembali
+    input.value = '';
+    input.focus();
+    return false;
   }
 }
